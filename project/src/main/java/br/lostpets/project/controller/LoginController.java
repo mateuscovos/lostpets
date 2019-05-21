@@ -44,7 +44,6 @@ public class LoginController {
 		}
 		else if(usuario != null) {
 			modelAndView.setViewName("principalPage");
-			historicoAcessoLog.dataHora(usuario.getNome());
 		}
 		else {
 			modelAndView = new ModelAndView("redirect:/LostPets");

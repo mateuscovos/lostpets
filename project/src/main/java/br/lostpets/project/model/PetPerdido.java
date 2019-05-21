@@ -70,16 +70,9 @@ public class PetPerdido {
 		this.idAnimal = idAnimal;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdUsuario(Usuario idUsuario) {
+		this.usuario = idUsuario;
 	}
-
-	public int getIdDonoPetPerdido() {
-		return idDonoPetPerdido;
-	}
-
-	public void setIdDonoPetPerdido(int idDonoPetPerdido) {
-		this.idDonoPetPerdido = idDonoPetPerdido;
 	public Usuario getIdUsuario() {
 		return usuario;
 	}
