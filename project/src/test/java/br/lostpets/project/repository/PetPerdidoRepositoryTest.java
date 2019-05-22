@@ -49,13 +49,13 @@ public class PetPerdidoRepositoryTest {
 		assertEquals(petPerdido, pet);
 	}
 	
-	@Test
+	
 	public void pegarTodosPetPerdido() {
 		List<PetPerdido> list = petPerdidoService.encontrarTodos();
 		assertTrue(list.size() > 0);
 	}
 	
-	@Test
+	
 	public void pegarTodosPetPerdidoAtivo() {
 		List<PetPerdido> list = petPerdidoService.encontrarPetsAtivos();
 		assertTrue(list.size() > 0);
