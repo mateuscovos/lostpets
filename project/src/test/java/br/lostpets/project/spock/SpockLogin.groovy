@@ -39,6 +39,4 @@ class SpockLogin extends Specification{
 			
 	}
 	
-	"se colocou so "
-	
 }

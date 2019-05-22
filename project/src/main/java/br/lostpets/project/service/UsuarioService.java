@@ -26,8 +26,9 @@ public class UsuarioService {
 		return usuarioRepository.unicoUsuario(id);
 	}
 	
-	public void salvarUsuario(Usuario usuario) {
-		usuarioRepository.save(usuario);		
+	public boolean salvarUsuario(Usuario usuario) {
+		usuarioRepository.save(usuario);	
+		return true;
     }
 
 	public Usuario emailSenha(String email, String senha) {
