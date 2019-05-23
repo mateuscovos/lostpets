@@ -29,7 +29,7 @@ public class CadastroPessoaAnimalComponentTest {
 	
 	@Before
 	public void init() {
-		usuario = new Usuario("mateus", "mateus@lost.com", "(11) 91234-1234", "(11) 1234-1234");
+		usuario = new Usuario("mateus", "(11) 1234-1234", "(11) 91234-1234","mateus@lost.com","Senha","Imagem","Cep","Rua","Bairro","Cidade","Uf","Latitude","Longitude");
 		//usuarioService.salvarUsuario(usuario);
 		petPerdido = new PetPerdido(usuario,"tobias", "12/12/2018", "Descrição perdido","Gato","C://Path","00.000.000","Latitude","Longitude");
 		//petPerdidoService.salvarPet(petPerdido);

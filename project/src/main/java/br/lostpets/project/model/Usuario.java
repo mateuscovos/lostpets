@@ -15,41 +15,57 @@ import br.lostpets.project.service.ServiceGeral;
 
 @Entity
 @Table(name = "USUARIO")
-public class Usuario{
-	
+public class Usuario {
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, name = "ID_PESSOA")
 	private int idPessoa;
-	
+
 	@OneToMany(mappedBy = "usuario")
 	private List<PetPerdido> idAnimal;
-	
-	@Column(nullable = false, name = "NOME") private String nome;
-	@Column(nullable = true, name = "TELEFONE_FIXO") private String telefoneFixo;
-	@Column(nullable = true, name = "TELEFONE_CELULAR") private String telefoneCelular;
-	@Column(nullable = false, name = "EMAIL") private String email;
-	@Column(nullable = true, name = "SENHA") private String senha;
-	@Column(nullable = true, name = "PATH_IMG") private String idImagem;
-	@Column(nullable = true, name = "CEP") private String cep;
-	@Column(nullable = true, name = "RUA") private String rua;
-	@Column(nullable = true, name = "BAIRRO") private String bairro;
-	@Column(nullable = true, name = "CIDADE") private String cidade;
-	@Column(nullable = true, name = "UF") private String uf;
-	@Column(nullable = true, name = "LATITUDE") private String latitude;
-	@Column(nullable = true, name = "LONGITUDE") private String longitude;
-	@Column(nullable = false, name = "ADD_CADASTRO") private String addCadastro = dataHora();
-	@Column(nullable = true, name = "ULTIMO_ACESSO") private String ultimoAcesso;
+
+	@Column(nullable = false, name = "NOME")
+	private String nome;
+	@Column(nullable = true, name = "TELEFONE_FIXO")
+	private String telefoneFixo;
+	@Column(nullable = true, name = "TELEFONE_CELULAR")
+	private String telefoneCelular;
+	@Column(nullable = false, name = "EMAIL")
+	private String email;
+	@Column(nullable = true, name = "SENHA")
+	private String senha;
+	@Column(nullable = true, name = "PATH_IMG")
+	private String idImagem;
+	@Column(nullable = true, name = "CEP")
+	private String cep;
+	@Column(nullable = true, name = "RUA")
+	private String rua;
+	@Column(nullable = true, name = "BAIRRO")
+	private String bairro;
+	@Column(nullable = true, name = "CIDADE")
+	private String cidade;
+	@Column(nullable = true, name = "UF")
+	private String uf;
+	@Column(nullable = true, name = "LATITUDE")
+	private String latitude;
+	@Column(nullable = true, name = "LONGITUDE")
+	private String longitude;
+	@Column(nullable = false, name = "ADD_CADASTRO")
+	private String addCadastro = dataHora();
+	@Column(nullable = true, name = "ULTIMO_ACESSO")
+	private String ultimoAcesso;
 
 	@OneToMany(mappedBy = "usuarioAchou")
-	private List<AnimaisAchados> animaisAchados;	
-	
+	private List<AnimaisAchados> animaisAchados;
+
 	private String dataHora() {
 		return new ServiceGeral().getDateHour();
 	}
 
-	public Usuario() {}
-	
+	public Usuario() {
+	}
+
 	public Usuario(String nome, String telefoneFixo, String telefoneCelular, String email, String senha,
 			String idImagem, String cep, String rua, String bairro, String cidade, String uf, String latitude,
 			String longitude) {
@@ -68,24 +84,23 @@ public class Usuario{
 		this.longitude = longitude;
 		this.addCadastro = dataHora();
 	}
-	
+
 	public Usuario(String nome, String email, String celular, String telefone) {
 		this.nome = nome;
-		this.email = email;	
+		this.email = email;
 		this.telefoneCelular = celular;
 		this.telefoneFixo = telefone;
 		this.addCadastro = dataHora();
 	}
-	
-	/*private String cripSenha(String senhaOriginal){
-		String senhaSerializado = Base64.getEncoder().encodeToString(senhaOriginal.getBytes());
-    	return senhaSerializado;
-	}
-	private String descripSenha(String senhaSerializado) {
-		String senhaDeserializado;
-	    senhaDeserializado = new String(Base64.getDecoder().decode(senhaSerializado));
-	    return senhaDeserializado;
-	}*/
+
+	/*
+	 * private String cripSenha(String senhaOriginal){ String senhaSerializado =
+	 * Base64.getEncoder().encodeToString(senhaOriginal.getBytes()); return
+	 * senhaSerializado; } private String descripSenha(String senhaSerializado) {
+	 * String senhaDeserializado; senhaDeserializado = new
+	 * String(Base64.getDecoder().decode(senhaSerializado)); return
+	 * senhaDeserializado; }
+	 */
 
 	public int getIdPessoa() {
 		return idPessoa;
@@ -130,7 +145,7 @@ public class Usuario{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public String getIdImagem() {
 		return idImagem;
 	}
@@ -210,7 +225,7 @@ public class Usuario{
 	public void setUltimoAcesso(String ultimoAcesso) {
 		this.ultimoAcesso = ultimoAcesso;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Usuario [idPessoa=" + idPessoa + ", nome=" + nome + ", telefoneFixo=" + telefoneFixo
@@ -219,5 +234,5 @@ public class Usuario{
 				+ uf + ", latitude=" + latitude + ", longitude=" + longitude + ", addCadastro=" + addCadastro
 				+ ", ultimoAcesso=" + ultimoAcesso + "]";
 	}
-	
+
 }

@@ -17,14 +17,18 @@ import br.lostpets.project.service.UsuarioService;
 @Controller
 public class LoginController {
 
-	@Autowired 
 	private UsuarioService usuarioService;
-	@Autowired
 	private HistoricoAcessoLog historicoAcessoLog;
-	
+
+	@Autowired
+	public LoginController(UsuarioService usuarioService, HistoricoAcessoLog historicoAcessoLog) {
+		this.usuarioService = usuarioService;
+		this.historicoAcessoLog = historicoAcessoLog;
+	}
+
 	private Usuario usuario;
 	private ModelAndView modelAndView;
-	
+
 	@RequestMapping(value = { "/", "/LostPets"}, method = RequestMethod.GET)
 	public ModelAndView loginPage() {
 		modelAndView = new ModelAndView();
@@ -33,12 +37,12 @@ public class LoginController {
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
-	
+
 	@PostMapping("/Dashboard")
 	public ModelAndView logar(@Valid Usuario usuario, BindingResult bindingResult) {
-		
+
 		usuario = usuarioService.emailSenha(usuario.getEmail(), usuario.getSenha());
-		
+
 		if (bindingResult.hasErrors()) {
 			modelAndView = new ModelAndView("redirect:/LostPets");
 		}
@@ -50,6 +54,5 @@ public class LoginController {
 			modelAndView.addObject("mensagem", "E-mail ou senha inválido");
 		}
 		return modelAndView;
-	}	
-	
+	}
 }

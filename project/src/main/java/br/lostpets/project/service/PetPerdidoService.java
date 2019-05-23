@@ -22,16 +22,20 @@ public class PetPerdidoService {
 	public PetPerdido encontrarUnicoPet(int id) {
 		return petPerdidoRepository.getAtivosByIdAnimal(id);
 	}
-	
+
 	public PetPerdido encontrarUnicoPet(PetPerdido petPerdido) {
-		if(petPerdido == null) { return null; }
+		if (petPerdido == null) {
+			return null;
+		}
 		return petPerdidoRepository.getAtivosByIdAnimal(petPerdido.getIdAnimal());
 	}
 
-	public void salvarPet(PetPerdido petPerdido) {		
-		if (!this.isValidAttributes(petPerdido)) { return; }
-	
-		petPerdidoRepository.save(petPerdido);	
+	public void salvarPet(PetPerdido petPerdido) {
+		if (!this.isValidAttributes(petPerdido)) {
+			return;
+		}
+
+		petPerdidoRepository.save(petPerdido);
 	}
 
 	public List<PetPerdido> encontrarTodos() {
@@ -40,32 +44,32 @@ public class PetPerdidoService {
 
 	private boolean isValidAttributes(PetPerdido petPerdido) {
 
-		if (petPerdido == null) { 
-			return false; 
+		if (petPerdido == null) {
+			return false;
 		}
-		if (petPerdido.getIdUsuario() == null) { 
-			return false; 
-		}		
-		if(petPerdido.getIdUsuario().getIdPessoa() == 0) {
-			return false; 
+		if (petPerdido.getIdUsuario() == null) {
+			return false;
+		}
+		if (petPerdido.getIdUsuario().getIdPessoa() == 0) {
+			return false;
 		}
 		if (this.isEmptyOrNull(petPerdido.getDataPerdido())) {
-			return false; 
+			return false;
 		}
 		if (this.isEmptyOrNull(petPerdido.getDescricao())) {
-			return false; 
+			return false;
 		}
 		if (this.isEmptyOrNull(petPerdido.getNomeAnimal())) {
-			return false; 
+			return false;
 		}
 		if (this.isEmptyOrNull(petPerdido.getTipoAnimal())) {
-			return false; 
+			return false;
 		}
 		if (this.isEmptyOrNull(petPerdido.getCep())) {
-			return false; 
+			return false;
 		}
 
-		return true; 
+		return true;
 	}
 
 	private boolean isEmptyOrNull(String text) {
