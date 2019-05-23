@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>net.bytebuddy</groupId>
 			<artifactId>byte-buddy</artifactId>
-			<version>1.9.10</version>
+			<version>1.6.5</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -136,6 +136,7 @@
 						</goals>
 					</execution>
 				</executions>
+
 			</plugin>
 
 		</plugins>

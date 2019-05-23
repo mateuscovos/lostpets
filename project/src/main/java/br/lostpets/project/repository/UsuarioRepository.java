@@ -15,12 +15,15 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	public Usuario encontrarEmail(String email);
 
 	@Query("from Usuario where email = ?1 and senha = ?2")
-	public Usuario validarAcesso(String email, String senha);
+	public Usuario validarAcessoUsuario(String email, String senha);
 
 	@Query("from Usuario")
 	public List<Usuario> todosUsuario();
 
 	@Query("from Usuario where idPessoa = ?1")
 	public Usuario unicoUsuario(int id);
+
+	@Query("from Usuario where email = ?1 and senha = ?2")
+	public boolean verificarAcesso(String email, String senha);
 
 }

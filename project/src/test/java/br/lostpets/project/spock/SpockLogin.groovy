@@ -16,27 +16,17 @@ class SpockLogin extends Specification{
 
 	private Usuario usuario; 
 	private Usuario usuario1;
-
 	@Autowired
-	UsuarioService usuarioService;
+	private UsuarioService usuarioService;
 	
 	def 'verificar se usuario consta na base de dados para acessar'() {
-		setup:
+		given:
 			usuario = new Usuario("nome", "telefoneFixo", "telefoneCelular", "email", "senha", "idImagem", "cep", "rua", "bairro", "cidade", "uf", "latitude", "longitude")
 			usuarioService.salvarUsuario(usuario)
-		when:
-			usuario1 = usuarioService.emailSenha(usuario.getEmail(), usuario.getSenha())
-		then:
-			usuario1 != null
+		expect:
+			usuarioService.emailSenha(usuario.getEmail(), usuario.getSenha()) != null
 	}
 	
-	def 'verificar se login ou senha é diferente de null'(){
-			given:
-				usuario.setEmail("email")
-				usuario.setSenha("senha")
-			expect:
-				usuario.getEmail() == usuario.getSenha()
-			
-	}
-	
+
+		
 }

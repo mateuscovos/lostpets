@@ -32,7 +32,10 @@ public class UsuarioService {
     }
 
 	public Usuario emailSenha(String email, String senha) {
-		return usuarioRepository.validarAcesso(email, senha);
+		return usuarioRepository.validarAcessoUsuario(email, senha);
+	}
+	public boolean emailSenhaExiste(String email, String senha) {
+		return usuarioRepository.verificarAcesso(email, senha);
 	}
 
 	public boolean verificarEmail(String email) {

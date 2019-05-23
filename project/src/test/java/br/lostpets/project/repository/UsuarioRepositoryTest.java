@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import javax.transaction.Transactional;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class UsuarioRepositoryTest {
 		usuario = new Usuario("Nome", "Fixo", "Celular","Email","Senha","Imagem","Cep","Rua","Bairro","Cidade","Uf","Latitude","Longitude");
 		usuarioRepository.save(usuario);
 		
-		Usuario usuarioEmail = usuarioRepository.validarAcesso(usuario.getEmail(), usuario.getSenha());
+		Usuario usuarioEmail = usuarioRepository.validarAcessoUsuario(usuario.getEmail(), usuario.getSenha());
 		
 		assertEquals(usuario.getEmail(), usuarioEmail.getEmail());
 		assertEquals(usuario.getSenha(), usuarioEmail.getSenha());
